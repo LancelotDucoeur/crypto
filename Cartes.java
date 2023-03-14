@@ -13,8 +13,9 @@ public class Cartes {
 
     public Cartes(String seed) {
         this();
-        for(int i = 0; i < 54; i++) 
-            Collections.swap(cartes, i, ((int)seed.charAt(i%seed.length()))%54);
+        if (!seed.isEmpty())
+            for(int i = 0; i < 54; i++) 
+                Collections.swap(cartes, i, ((int)seed.charAt(i%seed.length()))%54);
     }
 
     public String toString() {
