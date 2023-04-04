@@ -30,7 +30,7 @@ public class Cartes {
     public static String getMasque(String seed, int size) {
         Cartes c = new Cartes(seed);
         String res = "";
-        for (int t=0; t<size; t++)
+        for (int t=0; t<size; t++) 
             res += c.getLettre();
         return res;
     }
@@ -58,17 +58,21 @@ public class Cartes {
         return s;
     }
 
+    private void insertion(int indexCarte, int indexNouveau) {
+        cartes.add(indexNouveau,cartes.remove(indexCarte));
+    }
+
     private void etape_1() {
-        // joker noir = 54
+        // joker rouge = 54
         int indexJoker = cartes.indexOf(54);
-        Collections.swap(cartes, indexJoker, (indexJoker==53)?1:indexJoker+1 );
+        insertion(indexJoker, (indexJoker==53)?1:indexJoker+1 );
     }
 
     private void etape_2() {
         // joker rouge = 53
         int indexJoker = cartes.indexOf(53);
-        Collections.swap(cartes, indexJoker, (indexJoker==53)?2:
-                                             (indexJoker==52)?1:indexJoker+2);
+        insertion(indexJoker, (indexJoker==53)?2:
+                              (indexJoker==52)?1:indexJoker+2);
     }
 
     private void etape_3() {
